@@ -1,17 +1,25 @@
 .container
   .row 
     .col-md-3
+      h2 Opened 
       #accordion.panel-group   
         - @opened_tasks.each do |task|
-          .panel.panel-default
-            .panel-heading
-              h4.panel-title
-                a data-parent="#accordion" data-toggle="collapse" href="#task#{task.id}" 
-                  = task.title
-                = link_to 'Edit', edit_task_path(task)
-            .panel-collapse.collapse id="task#{task.id}"
-              .panel-body 
-                = task.description
+          = render 'task_panel', task: task
     .col-md-3
+      h2 Work In Progress
+      #accordion.panel-group   
+        - @work_tasks.each do |task|
+          = render 'task_panel', task: task
     .col-md-3
+      h2 Quality Assurance
+      #accordion.panel-group   
+        - @qa_tasks.each do |task|
+          = render 'task_panel', task: task
+      #accordion.panel-group
+        - @dropped_tasks.each do |task|
+          = render 'task_panel', task: task
     .col-md-3
+      h2 Approved
+      #accordion.panel-group   
+        - @approved_tasks.each do |task|
+          = render 'task_panel', task: task

@@ -1,0 +1,9 @@
+.container
+  .row
+    .col-md-12
+      = simple_form_for @task do |f|
+        = f.input :title
+        = f.input :description
+        = f.input :rating
+        = f.input :state, as: :select, collection:@task_collection
+        = f.button :submit
