@@ -1,6 +1,17 @@
 .container
   .row 
     .col-md-3
+      #accordion.panel-group   
+        - @opened_tasks.each do |task|
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                a data-parent="#accordion" data-toggle="collapse" href="#task#{task.id}" 
+                  = task.title
+                = link_to 'Edit', edit_task_path(task)
+            .panel-collapse.collapse id="task#{task.id}"
+              .panel-body 
+                = task.description
     .col-md-3
     .col-md-3
     .col-md-3

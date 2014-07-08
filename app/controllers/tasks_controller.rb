@@ -5,10 +5,13 @@ class TasksController < ApplicationController
  
   def create
     Task.create task_params
-    render :index 
+    redirect_to action: :index 
   end
+  
   def index
+    @opened_tasks = Task.where(state: 0)
   end
+  
   private
   def task_params 
     params.require(:task).permit(:title, :description, :rating)
