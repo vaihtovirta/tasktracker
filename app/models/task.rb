@@ -10,13 +10,13 @@ class Task < ActiveRecord::Base
       transition [:open,:qa] => :work
     end
     event :to_qa do
-      transition :work => :qa
+      transition [:work, :dropped] => :qa
     end
     event :to_approved do
       transition :qa => :approved
     end
     event :to_dropped do
-      transition :open => :dropped
+      transition [:open, :qa] => :dropped
     end
     
   end
