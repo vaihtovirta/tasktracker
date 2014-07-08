@@ -18,7 +18,7 @@ class TasksController < ApplicationController
  
   def edit
     @task = Task.find(params[:id])
-    @task_collection = Task.state_machine.states.map { |state| [state.name, state.value]}
+    @task_collection = @task.state_transitions.map{ |transition| [transition.to_name, transition.to] }.push([@task.state_name, @task.state])
   end
   
   def update 
