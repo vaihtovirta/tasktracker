@@ -14,10 +14,23 @@
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li><%= link_to 'Tasks', tasks_path %></li>
-      <li><%= link_to 'Create Task', new_task_path %></li> 
+      <li><%= link_to 'Create Task', new_task_path %></li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <li><button type="button" class="btn btn-default navbar-btn"><%= link_to 'Edit profile', edit_user_registration_path %></button></li>
+      <li><button type="button" class="btn btn-default navbar-btn"><%= link_to "Logout", destroy_user_session_path, method: :delete  %></button></li>
+      <% else %>
+      <li><button type="button" class="btn btn-default navbar-btn"><%= link_to "Sign up", new_user_registration_path  %></button></li>
+      <li><button type="button" class="btn btn-default navbar-btn"><%= link_to "Login", new_user_session_path  %></button></li>
+      <% end %>
+    </ul>    
   </div>
 </nav>
+<p class="navbar-text pull-right">
+
+
 <%= yield %>
 
 </body>
