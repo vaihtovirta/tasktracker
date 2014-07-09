@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709152540) do
+ActiveRecord::Schema.define(version: 20140709154602) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20140709152540) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "projects", force: true do |t|
+    t.string "title"
+    t.text   "description"
   end
 
   create_table "tasks", force: true do |t|
@@ -56,8 +58,10 @@ ActiveRecord::Schema.define(version: 20140709152540) do
     t.string   "title"
     t.text     "description"
     t.integer  "rating"
+    t.integer  "project_id"
   end
 
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
   add_index "tasks", ["state"], name: "index_tasks_on_state"
 
   create_table "users", force: true do |t|

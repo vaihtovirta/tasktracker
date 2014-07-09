@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  belongs_to :project
   state_machine :state, initial: :open do
     state :open, value: 0
     state :work, value: 1
