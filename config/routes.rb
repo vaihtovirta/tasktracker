@@ -5,6 +5,8 @@
   # See how all your routes lay out with "rake routes".
 Etatr::Application.routes.draw do
  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   resources :tasks
  
