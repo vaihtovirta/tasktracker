@@ -18,6 +18,6 @@ class Task < ActiveRecord::Base
     event :to_dropped do
       transition [:open, :qa] => :dropped
     end
-    
+   
   end
 end
