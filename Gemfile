@@ -42,3 +42,4 @@ gem 'slim-rails'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'rails_12factor', group: :production
