@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-config.assets.enabled = true
+
 module Etatr
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -21,3 +21,5 @@ module Etatr
     # config.i18n.default_locale = :de
   end
 end
+
+config.serve_static_assets = true
